@@ -4,9 +4,7 @@ from optparse import OptionParser
 from common.mysql import Mysql
 from common.awss3 import S3Uploader
 
-usage = "%prog [backup|backup_unsafe] database_name [options]"
-
-argv_parser = OptionParser(usage=usage)
+argv_parser = OptionParser()
 
 argv_parser.add_option("-o", "--out", dest="path_to_backup",
                        help="write backup to PATH", metavar="PATH")
