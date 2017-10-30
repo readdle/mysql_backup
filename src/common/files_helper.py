@@ -30,12 +30,12 @@ class FilesHelper:
 
         backup_part = backup_file.read(10240)
 
-        if backup_part.find('CREATE TABLE') == -1 or backup_part.find('INSERT INTO') == -1:
+        if backup_part.find(b'CREATE TABLE') == -1 or backup_part.find(b'INSERT INTO') == -1:
             raise Exception('Backup file is broken')
 
     @staticmethod
     def generate_default_sql_backup_path(database_name):
-        current_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
+        current_dir = os.getcwd()
         return "%s/backup/%s_%s.sql.gz" % (
             current_dir,
             database_name,
